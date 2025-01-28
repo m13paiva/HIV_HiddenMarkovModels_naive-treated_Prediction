@@ -182,5 +182,5 @@ def prepare_hmm_data_test(file_path,train_path,test_path,codons, subtype,
     data = process(codons,file_path, remove_major_mutations, split_subtypes, eq, rs)
     train, test = generate_train_test(data, test_fraction,rs)
     save_data(train, train_path, subtype, rem_gaps=False, n_samples=n_train_samples,random_state=rs)
-    save_data(test, test_path, subtype, rem_gaps=False, n_samples=n_test_samples,random_state=rs)
+    save_data(test, test_path, subtype, rem_gaps=True, n_samples=n_test_samples,random_state=rs)
 

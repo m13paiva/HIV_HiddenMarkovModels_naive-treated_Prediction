@@ -143,7 +143,9 @@ class HiddenMarkovModel:
 
         # Log-sum-exp for the final probabilities
         return np.logaddexp.reduce(log_current_probs)
+    
 
+    
     def forward_log_vectorized(self, sequence):
         seq_len = len(sequence)
         if seq_len == 0:
@@ -179,8 +181,9 @@ class HiddenMarkovModel:
             log_current_probs = log_next_probs
 
         # Final log-sum-exp
-        return np.logaddexp.reduce(log_current_probs)'''
+        return np.logaddexp.reduce(log_current_probs)
 
+    '''
     def forward(self, sequence):
         """
         Given an observed sequence, calculate the forward probability of the sequence

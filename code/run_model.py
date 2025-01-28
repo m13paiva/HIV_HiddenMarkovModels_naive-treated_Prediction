@@ -85,7 +85,8 @@ def test_model(subtype, n_iter, test_frac, pred_subtype, dis_drm,PI_codons, RT_c
     rawdata_path = get_abs_path("model_data", "raw_data", "global_AA_table_wts.csv")
     train_path=get_abs_path("model_data", "train")
     test_path = get_abs_path("model_data", "test")
-    output_file= get_abs_path("output_data", "test_output.csv")
+    output_last_it= get_abs_path("output_data", "test_last_it.csv")
+    output_file = get_abs_path("output_data", "test_output.csv")
 
     if dis_drm:
         codons = compile_codons(PI_codons, RT_codons)
@@ -122,15 +123,19 @@ def test_model(subtype, n_iter, test_frac, pred_subtype, dis_drm,PI_codons, RT_c
         profiles=build_profiles(train_path)
         seqs,seq_count=read_test(test_path,seq_count)
         seq_scores=score_sequences_test(seqs,profiles)
-        write_output(profiles, seq_scores, output_file)
-        read_output(output_file)
         total_seq_scores.update(seq_scores)
+        write_output(profiles, total_seq_scores, output_file)
+        write_output(profiles, seq_scores, output_last_it)
+        print("\n")
+        read_output(output_last_it)
+        print("\n")
+
     #print(seq_scores)
     write_output(profiles,total_seq_scores,output_file)
     read_output(output_file)
 
 def test():
-    test_model(subtype="B",
+    '''test_model(subtype="B",
                n_iter=50,
                test_frac=0.2,
                pred_subtype=False,
@@ -139,8 +144,25 @@ def test():
                RT_codons=[184, 65, 70, 74, 115, 41, 67, 70, 210, 215, 219, 100, 101, 103, 106, 138, 181, 188, 190, 230],
                test_samples=None,
                train_samples=None,
-               eq=True)
+               eq=True)'''
+    rawdata_path = get_abs_path("model_data", "raw_data", "global_AA_table_wts.csv")
+    train_path = get_abs_path("model_data", "train")
+    test_path = get_abs_path("model_data", "test")
+    output_file = get_abs_path("output_data", "test_output.csv")
 
+    prepare_hmm_data_test(rawdata_path,
+                          train_path,
+                          test_path,
+                          codons=None,
+                          subtype="B",
+                          test_fraction=0.3,
+                          n_test_samples=2,
+                          n_train_samples=3,
+                          remove_major_mutations=False,
+                          split_subtypes=True,
+                          eq=True,
+                          rs=None
+                          )
 #test()
 
 

@@ -212,18 +212,20 @@ def read_msa(file_path):
         return msa
 
 def read_test(folder_path, seq_count):
+    seq_list = []
     for file_path in os.listdir(folder_path):
+        #print(file_path)
         with open(os.path.join(folder_path,file_path), 'r') as file:
             file_name = os.path.basename(file_path)  # Extracts the file name cross-platform
             subtype = file_name.split('.')[0]  # Splits by '.' and gets the first part
-            seq_list = []
+
             for line in file:
                 clean_line = line.strip()  # Remove whitespace, including newlines
                 if clean_line:  # Only add non-empty lines
                     seq_list.append((f"seq_{seq_count}",subtype,"-"+clean_line))
                     seq_count+=1
 
-        return seq_list, seq_count
+    return seq_list, seq_count
 
 def filter_max_score(d):
     max_key = max(d, key=d.get)
@@ -234,7 +236,7 @@ def filter_max_score(d):
 def write_output(profiles, scores, file_name):
     # Verificar se o arquivo já existe
     if os.path.exists(file_name):
-        print(f"The file '{file_name}' already exists and will be replaced.")
+        #print(f"The file '{file_name}' already exists and will be replaced.")
 
     rows = []
     first_row = ["subtype", "pred_subtype", "correct_pred"]
