@@ -235,7 +235,7 @@ def filter_max_score(d):
 
 def write_output(profiles, scores, file_name):
     # Verificar se o arquivo já existe
-    if os.path.exists(file_name):
+    #if os.path.exists(file_name):
         #print(f"The file '{file_name}' already exists and will be replaced.")
 
     rows = []

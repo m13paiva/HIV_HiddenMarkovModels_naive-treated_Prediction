@@ -3,7 +3,7 @@
 ==============================================================
  SETUP:
   1) Navigate to the directory "code":
-     cd your_directory\naive-treated_hmm_pred\code
+     cd your_directory\HIV_HiddenMarkovModels_naive-treated_Prediction\code
 
   2) Create a virtual environment (Python 3.12 required):
      python3.12 -m venv hiv1_hmm
