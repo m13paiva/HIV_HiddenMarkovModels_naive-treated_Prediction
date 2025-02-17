@@ -45,6 +45,7 @@ HELP = r"""
 
  ARGUMENTS:
     IN_FILE    Fasta file with sequences to classify.
+    OUT_FILE   Specific CSV file for the output.
 
 ==============================================================
  Developed by : Manuel Almeida
