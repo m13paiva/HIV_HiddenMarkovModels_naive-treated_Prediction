@@ -200,7 +200,6 @@ class HiddenMarkovModel:
         n_states = len(states)
 
         # 1. Build NumPy arrays from your existing accessors
-        #    (No changes to the class; we just query it here.)
         init_prob = np.array([self.get_init_prob(s) for s in states], dtype=float)
         trans_prob = np.zeros((n_states, n_states), dtype=float)
         for i, s_orig in enumerate(states):

@@ -129,7 +129,7 @@ def test_model(subtype, n_iter, test_frac, pred_subtype, dis_drm,PI_codons, RT_c
         print("\n")
         read_output(output_last_it)
         print("\n")
-
+    print(f"\n»»»»»»»»»»»»»»»»»»»»»» FINAL RESULTS »»»»»»»»»»»»»»»»»»»»»\n")
     #print(seq_scores)
     write_output(profiles,total_seq_scores,output_file)
     read_output(output_file)

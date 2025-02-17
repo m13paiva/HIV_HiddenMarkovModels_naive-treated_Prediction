@@ -16,6 +16,24 @@ def predicted_probability(pred_score, all_scores):
     # 4) Probability
     return numerator / denominator
 
+def normalized_score(pred_clas, all_scores):
+    other_clas=max(all_scores)
+    epsilon=np.finfo(float).eps
+
+    if pred_clas == other_clas:
+        res = 1
+    elif pred_clas > 0:
+        if other_clas > 0:
+            res = other_clas / pred_clas
+        else:
+            res = epsilon / (pred_clas - other_clas)
+    elif pred_clas < 0:
+        res = pred_clas / other_clas
+    else:
+        res = -epsilon / other_clas
+
+    return res ** 4
+
 
 def classify_seq(seq_dict):
     max_score=-math.inf
@@ -64,7 +82,9 @@ def save_output(nested_dict,filename):
 
 def print_output(data):
     for seq in data:
-        print(f"\n»{seq} classified as {data[seq]['pred_class']}, with a predicted probability of {round(data[seq]['pred_prob']*100,2)}%")
+        #print(f"\n»{seq} classified as {data[seq]['pred_class']}, with a predicted probability of {round(data[seq]['pred_prob']*100,2)}%")
+        print(f"\n»{seq} classified as {data[seq]['pred_class']}, with a normalized score of {round(data[seq]['norm_score'], 4)}")
+
 
 def classify(seq_scores):
     seq_classified={}
@@ -72,9 +92,12 @@ def classify(seq_scores):
         seq_classified[seq]={}
         seq_dict=seq_scores[seq]
         pred_clas=classify_seq(seq_dict)
-        pred_prob=predicted_probability(seq_dict[pred_clas],list(seq_dict.values()))
+        others={k:seq_dict[k] for k in seq_dict if k!=pred_clas}
+        #pred_prob=predicted_probability(seq_dict[pred_clas],list(others.values()))
+        norm_score=normalized_score(seq_dict[pred_clas], list(others.values()))
         seq_classified[seq]["pred_class"] = pred_clas
-        seq_classified[seq]["pred_prob"] = pred_prob
+        #seq_classified[seq]["pred_prob"] = pred_prob
+        seq_classified[seq]["norm_score"] = norm_score
         seq_classified[seq]={**seq_classified[seq],**seq_dict}
     return seq_classified
 

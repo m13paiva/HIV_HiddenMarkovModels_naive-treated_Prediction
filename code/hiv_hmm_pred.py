@@ -49,6 +49,8 @@ HELP = r"""
 ==============================================================
  Developed by : Manuel Almeida
  Email address: mpa.almeida@campus.fct.unl.pt
+ Available in : 
+https://github.com/m13paiva/IHMT-HIV-naive-experienced-prediction
 ==============================================================
 """
 
