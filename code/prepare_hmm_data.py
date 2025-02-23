@@ -184,3 +184,4 @@ def prepare_hmm_data_test(file_path,train_path,test_path,codons, subtype,
     save_data(train, train_path, subtype, rem_gaps=False, n_samples=n_train_samples,random_state=rs)
     save_data(test, test_path, subtype, rem_gaps=True, n_samples=n_test_samples,random_state=rs)
 
+
