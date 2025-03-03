@@ -1,15 +1,18 @@
 # HIV-1 ART-naïve/treated prediction with HMM - v1.0
 
 ## SETUP
-1. Navigate to the directory `code`:
+
+1. Download and Unzip the GitHub's contents
+
+2. Navigate to the directory `code`:
    ```bash
    cd your_directory\HIV_HiddenMarkovModels_naive-treated_Prediction\code
    ```
-2. Create a virtual environment (Python 3.12 required):
+3. Create a virtual environment (Python 3.12 required):
    ```bash
    python3.12 -m venv hiv1_hmm
    ```
-3. Activate the virtual environment:
+4. Activate the virtual environment:
    - On Windows:
      ```bash
      .\hiv1_hmm\Scripts\activate
@@ -18,11 +21,11 @@
      ```bash
      source hiv1_hmm/bin/activate
      ```
-4. Install required packages within the virtual environment:
+5. Install required packages within the virtual environment:
    ```bash
    pip install -r requirements.txt
    ```
-5. Verify the installation (optional):
+6. Verify the installation (optional):
    ```bash
    python --version   # Should display Python 3.12.x
    pip list           # To see installed packages
