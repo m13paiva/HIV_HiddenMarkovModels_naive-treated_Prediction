@@ -83,7 +83,8 @@ def save_output(nested_dict,filename):
 def print_output(data):
     for seq in data:
         #print(f"\n»{seq} classified as {data[seq]['pred_class']}, with a predicted probability of {round(data[seq]['pred_prob']*100,2)}%")
-        print(f"\n»{seq} classified as {data[seq]['pred_class']}, with a normalized score of {round(data[seq]['norm_score'], 4)}")
+        #print(f"\n»{seq} classified as {data[seq]['pred_class']}, with a normalized score of {round(data[seq]['norm_score'], 4)}")
+        print(f"\n»{seq} classified as {data[seq]['pred_class']}\n")
 
 
 def classify(seq_scores):
