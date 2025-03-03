@@ -23,10 +23,10 @@ HELP = r"""
     python hiv_hmm_pred.py [OPTIONS]
 
  DESCRIPTION:
-    This program takes HIV-1 "pol" gene sequences (in FASTA format) 
-    and predicts if they belong to a patient who has experienced 
-    antiretroviral treatment (ART-treated) or not (ART-naïve),
-    using Hidden Markov Models.
+    This program takes HIV-1 "pol" gene sequences (in FASTA 
+    format) and predicts if they belong to a patient who has 
+    experienced antiretroviral treatment (ART-treated) or not 
+    (ART-naïve), using Hidden Markov Models.
 
  OPTIONS:
     -h, --help
@@ -44,15 +44,15 @@ HELP = r"""
         Test performance of HMM algorythm.
 
  ARGUMENTS:
-    IN_FILE    Fasta file with sequences to classify.
+    IN_FILE    Fasta file with sequences to classify (must be
+               located on the "input_data" folder)
     OUT_FILE   Specific CSV file for the output.
 
 ==============================================================
  Developed by : Manuel Almeida
  Email address: mpa.almeida@campus.fct.unl.pt
- Available in : 
-https://github.com/m13paiva/IHMT-HIV-naive-experienced-prediction
 ==============================================================
+Available in: https://github.com/m13paiva/IHMT-HIV-naive-experienced-prediction
 """
 
 
