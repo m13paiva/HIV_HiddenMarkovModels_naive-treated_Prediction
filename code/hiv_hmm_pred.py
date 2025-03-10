@@ -121,23 +121,23 @@ def test_cmd():
                         print("\nSpecify Protease Inhibitor (PI) codons.\n",
                               CODON_FORMAT)
                         codons = input("PI codons " + PROMPT_ARROW)
-                        codons_ls = codons_prompt(codons)
-                        if not verify_codon_format(codons_ls):
-                            print(WRONG_FORMAT)
-                        else:
+                        try:
+                            codons_ls = codons_prompt(codons)
                             PI_codons = codons_ls
                             proceed3 = True
+                        except:
+                            print(WRONG_FORMAT)
                     proceed3 = False
                     while not proceed3:
-                        print("\nSpecify Reverse Transcriptase (RT) codons.\n",
+                        print("\nSpecify Protease Inhibitor (RT) codons.\n",
                               CODON_FORMAT)
                         codons = input("RT codons " + PROMPT_ARROW)
-                        codons_ls = codons_prompt(codons)
-                        if not verify_codon_format(codons_ls):
-                            print(WRONG_FORMAT)
-                        else:
+                        try:
+                            codons_ls = codons_prompt(codons)
                             RT_codons = codons_ls
                             proceed3 = True
+                        except:
+                            print(WRONG_FORMAT)
                     proceed2 = True
                 elif ans == "N":
                     proceed2 = True
@@ -211,7 +211,7 @@ def test_cmd():
     proceed=False
     while not proceed:
         print("\nDo you want to use a balanced dataset?")
-        print("(same number of naive and treated sequences but, consequently less data)\n")
+        print("(same number of naive and treated sequences but, consequently\nless data)\n")
         ans = input(PROMPT_ARROW).upper()
         if ans == "Y":
             eq=True
@@ -317,12 +317,12 @@ def classify_cmd(fasta_file, output_file):
                         print(INVALID_ANS)
             proceed = True
         else:
+            print(SEP_BAR)
             proceed = True
-
 
     if not use_prev_choices:
         # ask if user wants to discard major DRM codons
-        print(SEP_BAR)
+        #print(SEP_BAR)
         proceed = False
         while not proceed:
             print("\nDo you want the model to discard the major DRM codons?")
@@ -344,24 +344,24 @@ def classify_cmd(fasta_file, output_file):
                         while not proceed3:
                             print("\nSpecify Protease Inhibitor (PI) codons.\n",
                                   CODON_FORMAT)
-                            codons=input("PI codons "+PROMPT_ARROW)
-                            codons_ls=codons_prompt(codons)
-                            if not verify_codon_format(codons_ls):
+                            codons = input("PI codons " + PROMPT_ARROW)
+                            try:
+                                codons_ls = codons_prompt(codons)
+                                PI_codons = codons_ls
+                                proceed3 = True
+                            except:
                                 print(WRONG_FORMAT)
-                            else:
-                                PI_codons=codons_ls
-                                proceed3=True
-                        proceed3=False
+                        proceed3 = False
                         while not proceed3:
-                            print("\nSpecify Reverse Transcriptase (RT) codons.\n",
+                            print("\nSpecify Protease Inhibitor (RT) codons.\n",
                                   CODON_FORMAT)
-                            codons=input("RT codons "+PROMPT_ARROW)
-                            codons_ls=codons_prompt(codons)
-                            if not verify_codon_format(codons_ls):
+                            codons = input("RT codons " + PROMPT_ARROW)
+                            try:
+                                codons_ls = codons_prompt(codons)
+                                RT_codons = codons_ls
+                                proceed3 = True
+                            except:
                                 print(WRONG_FORMAT)
-                            else:
-                                RT_codons=codons_ls
-                                proceed3=True
                         proceed2 = True
                     elif ans=="N":
                         proceed2 = True
