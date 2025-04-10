@@ -1,0 +1,4 @@
+pred_subtype: True
+dis_drm: True
+PI_codons: [1, 2, 3]
+RT_codons: [4, 5, 6]
